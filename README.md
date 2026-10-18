@@ -1,5 +1,7 @@
 # HideArmor · 隐藏盔甲
 
+**简体中文** | [English](README_EN.md)
+
 无需卸下装备，即可隐藏头盔、胸甲、护腿和靴子的外观。**护甲值、附魔、耐久和保护效果不变，鞘翅始终显示。**
 
 ## 安装方法
@@ -25,7 +27,3 @@
 权限节点：`hidearmor.use`（默认允许所有玩家使用）。显示设置会自动保存。
 
 遇到问题？欢迎[提交 Issue](https://github.com/JeiFing/HideArmor/issues)。
-
----
-
-<sub>HideArmor is a Minecraft server plugin that hides armor appearances without affecting actual equipment attributes. Made by JeiFing.</sub>
