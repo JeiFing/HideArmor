@@ -10,7 +10,7 @@
 2. 安装必需前置 [PacketEvents](https://github.com/retrooper/packetevents/releases)，选择支持对应 Minecraft 版本的构建。
 3. 将两个 JAR 放入服务器的 `plugins` 文件夹，**重启服务器**即可。
 
-玩家无需安装客户端 Mod。Java 版可直接使用；基岩版可搭配 Geyser/Floodgate。
+玩家无需安装客户端 Mod。插件安装在 Paper/Purpur/Folia 服务端；基岩版玩家可通过 Geyser 连接后使用。
 
 ## 使用方法
 
