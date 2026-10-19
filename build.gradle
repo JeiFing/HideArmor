@@ -1,0 +1,80 @@
+plugins {
+    id 'java'
+}
+
+group = 'cn.jeifing'
+version = '1.0.1'
+
+base {
+    archivesName = 'HideArmor'
+}
+
+tasks.named('jar') {
+    archiveFileName = 'HideArmor-1.0.1-MC-26.3.jar'
+}
+
+tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'codemc'
+        url = 'https://repo.codemc.io/repository/maven-releases/'
+    }
+    maven {
+        name = 'codemcSnapshots'
+        url = 'https://repo.codemc.io/repository/maven-snapshots/'
+    }
+    maven {
+        name = 'lophine'
+        url = 'https://repo.bacteriawa.com/repository/maven-public/'
+    }
+}
+
+def packetEventsCandidates = [
+        file('libs/packetevents-spigot-2.14.0-dev-26.3.jar'),
+        file('../build-deps/packetevents-spigot-2.14.0-dev-26.3.jar')
+]
+def localPacketEvents = packetEventsCandidates.find { it.isFile() }
+
+dependencies {
+    compileOnly 'fun.bm.lophine:lophine-api:26.3.build.777-alpha'
+
+    if (localPacketEvents != null) {
+        compileOnly files(localPacketEvents)
+        testImplementation files(localPacketEvents)
+    } else {
+        compileOnly 'com.github.retrooper:packetevents-spigot:2.14.0-SNAPSHOT'
+        testImplementation 'com.github.retrooper:packetevents-spigot:2.14.0-SNAPSHOT'
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.3'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.0.3'
+    testImplementation 'io.netty:netty-buffer:4.2.15.Final'
+    testImplementation 'com.google.code.gson:gson:2.14.0'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+    options.compilerArgs.add('-Xlint:deprecation')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+processResources {
+    filteringCharset = 'UTF-8'
+}

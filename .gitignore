@@ -1,0 +1,18 @@
+# Build tools / generated files
+.gradle/
+build/
+out/
+.idea/
+.vscode/
+*.class
+*.log
+# credentials and server private state
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*token*
+*credentials*
+plugins/
+**/hidden-players.yml
