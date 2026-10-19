@@ -10,7 +10,7 @@ Hide the appearance of your helmet, chestplate, leggings, and boots without remo
 2. Download and install the required [PacketEvents](https://github.com/retrooper/packetevents/releases) plugin, using a build compatible with your Minecraft version.
 3. Put both JAR files in your server's `plugins` folder and **restart the server**.
 
-Players don't need to install any client-side mods. Java Edition is supported; Bedrock Edition can be used with Geyser/Floodgate.
+Players don't need client-side mods. Install HideArmor on your Paper/Purpur/Folia server; Bedrock players can use it when connecting through Geyser.
 
 ## Usage
 
