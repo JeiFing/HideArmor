@@ -1,12 +1,12 @@
 name: HideArmor
-version: '1.0.1'
+version: '1.0.3'
 main: cn.jeifing.hidearmor.HideArmorPlugin
 description: 支持 Paper、Purpur 与 Folia 的玩家盔甲外观隐藏插件
 api-version: '26.3'
 folia-supported: true
 author: JeiFing
 depend: [packetevents]
-softdepend: [floodgate]
+softdepend: [floodgate, GSit]
 commands:
   hide:
     description: 分槽设置自身装备外观的显示与隐藏

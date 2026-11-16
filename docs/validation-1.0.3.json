@@ -1,0 +1,24 @@
+{
+  "automated_tests": 27,
+  "java_actions": [
+    "sit",
+    "lay",
+    "legsup",
+    "bellyflop",
+    "spin",
+    "crawl"
+  ],
+  "bedrock_actions": [
+    "sit",
+    "lay",
+    "legsup",
+    "bellyflop",
+    "spin",
+    "crawl"
+  ],
+  "third_person": true,
+  "free_camera": true,
+  "bedrock_inventory_icons_and_armor_transactions": true,
+  "real_armor_stats_unchanged": true,
+  "windows_real_test": false
+}

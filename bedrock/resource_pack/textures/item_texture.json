@@ -1,0 +1,93 @@
+{
+  "resource_pack_name": "MeowCraft HideArmor",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "hidearmor_leather_helmet": {
+      "textures": "textures/items/leather_helmet"
+    },
+    "hidearmor_leather_chestplate": {
+      "textures": "textures/items/leather_chestplate"
+    },
+    "hidearmor_leather_leggings": {
+      "textures": "textures/items/leather_leggings"
+    },
+    "hidearmor_leather_boots": {
+      "textures": "textures/items/leather_boots"
+    },
+    "hidearmor_chainmail_helmet": {
+      "textures": "textures/items/chainmail_helmet"
+    },
+    "hidearmor_chainmail_chestplate": {
+      "textures": "textures/items/chainmail_chestplate"
+    },
+    "hidearmor_chainmail_leggings": {
+      "textures": "textures/items/chainmail_leggings"
+    },
+    "hidearmor_chainmail_boots": {
+      "textures": "textures/items/chainmail_boots"
+    },
+    "hidearmor_copper_helmet": {
+      "textures": "textures/items/copper_helmet"
+    },
+    "hidearmor_copper_chestplate": {
+      "textures": "textures/items/copper_chestplate"
+    },
+    "hidearmor_copper_leggings": {
+      "textures": "textures/items/copper_leggings"
+    },
+    "hidearmor_copper_boots": {
+      "textures": "textures/items/copper_boots"
+    },
+    "hidearmor_iron_helmet": {
+      "textures": "textures/items/iron_helmet"
+    },
+    "hidearmor_iron_chestplate": {
+      "textures": "textures/items/iron_chestplate"
+    },
+    "hidearmor_iron_leggings": {
+      "textures": "textures/items/iron_leggings"
+    },
+    "hidearmor_iron_boots": {
+      "textures": "textures/items/iron_boots"
+    },
+    "hidearmor_golden_helmet": {
+      "textures": "textures/items/gold_helmet"
+    },
+    "hidearmor_golden_chestplate": {
+      "textures": "textures/items/gold_chestplate"
+    },
+    "hidearmor_golden_leggings": {
+      "textures": "textures/items/gold_leggings"
+    },
+    "hidearmor_golden_boots": {
+      "textures": "textures/items/gold_boots"
+    },
+    "hidearmor_diamond_helmet": {
+      "textures": "textures/items/diamond_helmet"
+    },
+    "hidearmor_diamond_chestplate": {
+      "textures": "textures/items/diamond_chestplate"
+    },
+    "hidearmor_diamond_leggings": {
+      "textures": "textures/items/diamond_leggings"
+    },
+    "hidearmor_diamond_boots": {
+      "textures": "textures/items/diamond_boots"
+    },
+    "hidearmor_netherite_helmet": {
+      "textures": "textures/items/netherite_helmet"
+    },
+    "hidearmor_netherite_chestplate": {
+      "textures": "textures/items/netherite_chestplate"
+    },
+    "hidearmor_netherite_leggings": {
+      "textures": "textures/items/netherite_leggings"
+    },
+    "hidearmor_netherite_boots": {
+      "textures": "textures/items/netherite_boots"
+    },
+    "hidearmor_turtle_helmet": {
+      "textures": "textures/items/turtle_helmet"
+    }
+  }
+}

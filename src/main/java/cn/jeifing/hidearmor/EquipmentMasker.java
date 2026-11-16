@@ -49,8 +49,8 @@ final class EquipmentMasker {
             ItemStack replacement = original;
 
             if (shouldHide(slot, original, setting)) {
-                if (mode == MaskMode.MODEL_LESS) {
-                    ItemMaskResult view = makeClientView(original, slot);
+                if (mode == MaskMode.MODEL_LESS || mode == MaskMode.BEDROCK_MODEL) {
+                    ItemMaskResult view = mode == MaskMode.BEDROCK_MODEL ? BedrockArmorView.mask(original, slot, setting) : makeClientView(original, slot);
                     replacement = view.changed() ? view.item() : ItemStack.EMPTY;
                 } else {
                     replacement = ItemStack.EMPTY;
@@ -77,7 +77,7 @@ final class EquipmentMasker {
             return new Equipment(slot, ItemStack.EMPTY);
         }
 
-        ItemMaskResult view = makeClientView(original, slot);
+        ItemMaskResult view = mode == MaskMode.BEDROCK_MODEL ? BedrockArmorView.mask(original, slot, setting) : makeClientView(original, slot);
         return new Equipment(slot, view.changed() ? view.item() : ItemStack.EMPTY);
     }
 
@@ -335,6 +335,7 @@ final class EquipmentMasker {
 
     enum MaskMode {
         AIR,
+        BEDROCK_MODEL,
         MODEL_LESS
     }
 

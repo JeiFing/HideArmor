@@ -1,0 +1,353 @@
+{
+  "format_version": 2,
+  "items": {
+    "minecraft:leather_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_leather_helmet",
+        "bedrock_identifier": "hidearmor:hidden_leather_helmet",
+        "display_name": "item.hidearmor.leather_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_leather_helmet",
+          "protection_value": 1
+        }
+      }
+    ],
+    "minecraft:leather_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_leather_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_leather_chestplate",
+        "display_name": "item.hidearmor.leather_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_leather_chestplate",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:leather_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_leather_leggings",
+        "bedrock_identifier": "hidearmor:hidden_leather_leggings",
+        "display_name": "item.hidearmor.leather_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_leather_leggings",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:leather_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_leather_boots",
+        "bedrock_identifier": "hidearmor:hidden_leather_boots",
+        "display_name": "item.hidearmor.leather_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_leather_boots",
+          "protection_value": 1
+        }
+      }
+    ],
+    "minecraft:chainmail_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_chainmail_helmet",
+        "bedrock_identifier": "hidearmor:hidden_chainmail_helmet",
+        "display_name": "item.hidearmor.chainmail_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_chainmail_helmet",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:chainmail_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_chainmail_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_chainmail_chestplate",
+        "display_name": "item.hidearmor.chainmail_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_chainmail_chestplate",
+          "protection_value": 5
+        }
+      }
+    ],
+    "minecraft:chainmail_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_chainmail_leggings",
+        "bedrock_identifier": "hidearmor:hidden_chainmail_leggings",
+        "display_name": "item.hidearmor.chainmail_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_chainmail_leggings",
+          "protection_value": 4
+        }
+      }
+    ],
+    "minecraft:chainmail_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_chainmail_boots",
+        "bedrock_identifier": "hidearmor:hidden_chainmail_boots",
+        "display_name": "item.hidearmor.chainmail_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_chainmail_boots",
+          "protection_value": 1
+        }
+      }
+    ],
+    "minecraft:copper_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_copper_helmet",
+        "bedrock_identifier": "hidearmor:hidden_copper_helmet",
+        "display_name": "item.hidearmor.copper_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_copper_helmet",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:copper_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_copper_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_copper_chestplate",
+        "display_name": "item.hidearmor.copper_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_copper_chestplate",
+          "protection_value": 5
+        }
+      }
+    ],
+    "minecraft:copper_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_copper_leggings",
+        "bedrock_identifier": "hidearmor:hidden_copper_leggings",
+        "display_name": "item.hidearmor.copper_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_copper_leggings",
+          "protection_value": 4
+        }
+      }
+    ],
+    "minecraft:copper_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_copper_boots",
+        "bedrock_identifier": "hidearmor:hidden_copper_boots",
+        "display_name": "item.hidearmor.copper_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_copper_boots",
+          "protection_value": 1
+        }
+      }
+    ],
+    "minecraft:iron_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_iron_helmet",
+        "bedrock_identifier": "hidearmor:hidden_iron_helmet",
+        "display_name": "item.hidearmor.iron_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_iron_helmet",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:iron_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_iron_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_iron_chestplate",
+        "display_name": "item.hidearmor.iron_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_iron_chestplate",
+          "protection_value": 6
+        }
+      }
+    ],
+    "minecraft:iron_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_iron_leggings",
+        "bedrock_identifier": "hidearmor:hidden_iron_leggings",
+        "display_name": "item.hidearmor.iron_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_iron_leggings",
+          "protection_value": 5
+        }
+      }
+    ],
+    "minecraft:iron_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_iron_boots",
+        "bedrock_identifier": "hidearmor:hidden_iron_boots",
+        "display_name": "item.hidearmor.iron_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_iron_boots",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:golden_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_golden_helmet",
+        "bedrock_identifier": "hidearmor:hidden_golden_helmet",
+        "display_name": "item.hidearmor.golden_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_golden_helmet",
+          "protection_value": 2
+        }
+      }
+    ],
+    "minecraft:golden_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_golden_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_golden_chestplate",
+        "display_name": "item.hidearmor.golden_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_golden_chestplate",
+          "protection_value": 5
+        }
+      }
+    ],
+    "minecraft:golden_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_golden_leggings",
+        "bedrock_identifier": "hidearmor:hidden_golden_leggings",
+        "display_name": "item.hidearmor.golden_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_golden_leggings",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:golden_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_golden_boots",
+        "bedrock_identifier": "hidearmor:hidden_golden_boots",
+        "display_name": "item.hidearmor.golden_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_golden_boots",
+          "protection_value": 1
+        }
+      }
+    ],
+    "minecraft:diamond_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_diamond_helmet",
+        "bedrock_identifier": "hidearmor:hidden_diamond_helmet",
+        "display_name": "item.hidearmor.diamond_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_diamond_helmet",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:diamond_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_diamond_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_diamond_chestplate",
+        "display_name": "item.hidearmor.diamond_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_diamond_chestplate",
+          "protection_value": 8
+        }
+      }
+    ],
+    "minecraft:diamond_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_diamond_leggings",
+        "bedrock_identifier": "hidearmor:hidden_diamond_leggings",
+        "display_name": "item.hidearmor.diamond_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_diamond_leggings",
+          "protection_value": 6
+        }
+      }
+    ],
+    "minecraft:diamond_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_diamond_boots",
+        "bedrock_identifier": "hidearmor:hidden_diamond_boots",
+        "display_name": "item.hidearmor.diamond_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_diamond_boots",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:netherite_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_netherite_helmet",
+        "bedrock_identifier": "hidearmor:hidden_netherite_helmet",
+        "display_name": "item.hidearmor.netherite_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_netherite_helmet",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:netherite_chestplate": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_netherite_chestplate",
+        "bedrock_identifier": "hidearmor:hidden_netherite_chestplate",
+        "display_name": "item.hidearmor.netherite_chestplate.name",
+        "bedrock_options": {
+          "icon": "hidearmor_netherite_chestplate",
+          "protection_value": 8
+        }
+      }
+    ],
+    "minecraft:netherite_leggings": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_netherite_leggings",
+        "bedrock_identifier": "hidearmor:hidden_netherite_leggings",
+        "display_name": "item.hidearmor.netherite_leggings.name",
+        "bedrock_options": {
+          "icon": "hidearmor_netherite_leggings",
+          "protection_value": 6
+        }
+      }
+    ],
+    "minecraft:netherite_boots": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_netherite_boots",
+        "bedrock_identifier": "hidearmor:hidden_netherite_boots",
+        "display_name": "item.hidearmor.netherite_boots.name",
+        "bedrock_options": {
+          "icon": "hidearmor_netherite_boots",
+          "protection_value": 3
+        }
+      }
+    ],
+    "minecraft:turtle_helmet": [
+      {
+        "type": "definition",
+        "model": "hidearmor:hidden_turtle_helmet",
+        "bedrock_identifier": "hidearmor:hidden_turtle_helmet",
+        "display_name": "item.hidearmor.turtle_helmet.name",
+        "bedrock_options": {
+          "icon": "hidearmor_turtle_helmet",
+          "protection_value": 2
+        }
+      }
+    ]
+  }
+}

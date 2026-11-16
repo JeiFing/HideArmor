@@ -27,3 +27,11 @@ You can also use any four-digit `0/1` combination, such as `/hide 1010`.
 Permission: `hidearmor.use` (enabled for all players by default). Your visibility settings are saved automatically.
 
 Having a problem? [Open an Issue](https://github.com/JeiFing/HideArmor/issues).
+
+## GSit and Bedrock
+
+GSit 3.7.0 integration covers sit, lay, legsup, bellyflop, spin and crawl. GSit is optional.
+
+For the Bedrock self view, put `bedrock/hidearmor-v2.json` in Geyser's `custom_mappings` directory and the companion `.mcpack` in its `packs` directory, then restart the proxy. This uses Geyser's documented custom item API and does not modify Geyser or clients. Inventory icons and real armor properties are preserved. Elytra remain visible.
+
+Build with Java 25 and Gradle 9. Supply compatible GSit and PacketEvents JARs as documented in the Chinese README, then run `gradle test jar`. Editable resource files are in `bedrock/resource_pack`.

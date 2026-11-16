@@ -42,6 +42,26 @@ class EquipmentMaskerTest {
     }
 
     @Test
+    void bedrockViewPreservesArmorAndRestoresCreativeInput() {
+        ItemStack original = item(ItemTypes.DIAMOND_CHESTPLATE);
+        var view = BedrockArmorView.mask(original, EquipmentSlot.CHEST_PLATE, ArmorVisibilitySetting.ALL_HIDDEN);
+        assertTrue(view.changed()); assertTrue(view.item().is(ItemTypes.DIAMOND_CHESTPLATE));
+        var equipment = EquipmentMasker.maskSingle(EquipmentSlot.CHEST_PLATE, original, EquipmentMasker.MaskMode.BEDROCK_MODEL, ArmorVisibilitySetting.ALL_HIDDEN);
+        assertFalse(equipment.getItem().isEmpty());
+        assertEquals(view.item().getComponent(ComponentTypes.ITEM_MODEL),equipment.getItem().getComponent(ComponentTypes.ITEM_MODEL));
+        assertEquals("hidearmor:hidden_diamond_chestplate", view.item().getComponent(ComponentTypes.ITEM_MODEL).orElseThrow().getModelLocation().toString());
+        assertEquals(original.getComponent(ComponentTypes.EQUIPPABLE),view.item().getComponent(ComponentTypes.EQUIPPABLE));
+        assertEquals(original.getComponent(ComponentTypes.ATTRIBUTE_MODIFIERS),view.item().getComponent(ComponentTypes.ATTRIBUTE_MODIFIERS));
+        assertFalse(original.getComponent(ComponentTypes.ITEM_MODEL).map(m -> m.getModelLocation().toString().startsWith("hidearmor:")).orElse(false));
+        var restored = BedrockArmorView.restore(view.item()); assertTrue(restored.changed());
+        assertEquals(original.getComponent(ComponentTypes.ITEM_MODEL),restored.item().getComponent(ComponentTypes.ITEM_MODEL));
+        assertFalse(BedrockArmorView.mask(item(ItemTypes.ELYTRA), EquipmentSlot.CHEST_PLATE, ArmorVisibilitySetting.ALL_HIDDEN).changed());
+        ItemStack custom=original.copy();custom.setComponent(ComponentTypes.ITEM_MODEL,new com.github.retrooper.packetevents.protocol.component.builtin.item.ItemModel(new ResourceLocation("example:custom_armor")));
+        assertFalse(BedrockArmorView.mask(custom, EquipmentSlot.CHEST_PLATE, ArmorVisibilitySetting.ALL_HIDDEN).changed());
+        assertFalse(BedrockArmorView.mask(original, EquipmentSlot.MAIN_HAND, ArmorVisibilitySetting.ALL_HIDDEN).changed());
+    }
+
+    @Test
     void hidesAnyNonEmptyItemInSelectedArmorSlots() {
         assertTrue(EquipmentMasker.shouldHide(
                 EquipmentSlot.HELMET, item(ItemTypes.IRON_HELMET),

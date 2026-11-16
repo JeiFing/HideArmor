@@ -1,0 +1,25 @@
+{
+  "version": "1.0.3",
+  "artifacts": [
+    {
+      "filename": "HideArmor-1.0.3-MC-26.3.jar",
+      "sha256": "dac7f18798ca21dafd4d7ad3360442f7e4c88b6f0ed71edcf9a7a2cfac24c9b9",
+      "bytes": 48014
+    },
+    {
+      "filename": "MeowCraft-HideArmor-Bedrock-1.0.1.mcpack",
+      "sha256": "75d50decb67521d7f89ae3e317746b70be3c1e716c8f0fff48a449df81c5e3de",
+      "bytes": 13879
+    },
+    {
+      "filename": "hidearmor-v2.json",
+      "sha256": "37b28f30b4c23198d4eb14ad70a9d55f222e86bc5d0dd1c2b276609ab79b1a2c",
+      "bytes": 11300
+    }
+  ],
+  "notes": "修复隐藏盔甲与GSit姿态兼容。Java及基岩均已抽检全部六种动作、第三人称与自由视角；基岩物品栏图标、装备取下和重新穿戴已实测。护甲属性不变，鞘翅保留显示。基岩需要配套资源包及自定义映射。",
+  "windows_real": false,
+  "android_real": false,
+  "international_real_new_version": false,
+  "public_multiplayer_new_version": false
+}

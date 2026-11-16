@@ -28,7 +28,13 @@ public final class HideArmorPlugin extends JavaPlugin {
         hideCommand.setTabCompleter(command);
         Bukkit.getPluginManager().registerEvents(new PlayerLifecycleListener(visibilityManager), this);
 
+        GSitPoseHook poses=null;
+        if(Bukkit.getPluginManager().isPluginEnabled("GSit")){
+            poses=new GSitPoseHook(this,visibilityManager);
+            Bukkit.getPluginManager().registerEvents(poses,this);
+        }
         for (Player player : Bukkit.getOnlinePlayers()) {
+            if(poses!=null)poses.track(player);
             visibilityManager.queueFullRefresh(player);
         }
 

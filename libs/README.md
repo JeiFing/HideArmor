@@ -1,10 +1,1 @@
-# PacketEvents compile dependency
-
-For the 26.3 development build, place a 26.3-capable PacketEvents Spigot JAR at:
-
-libs/packetevents-spigot-2.14.0-dev-26.3.jar
-
-The verified test baseline is PacketEvents upstream PR #1582 while official 26.3 support is not yet released.
-If the local JAR is absent, Gradle falls back to the CodeMC 2.14.0-SNAPSHOT coordinate.
-
-PacketEvents remains compile-only and is not bundled in HideArmor.
+构建前置：下载支持目标 Minecraft 版本的 GSit 与 PacketEvents。GSit 放在 GSit-26.3.jar，PacketEvents 可放在 PacketEvents-26.3.jar。第三方 JAR 不随源码重分发。

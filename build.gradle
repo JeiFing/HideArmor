@@ -3,14 +3,14 @@ plugins {
 }
 
 group = 'cn.jeifing'
-version = '1.0.1'
+version = '1.0.3'
 
 base {
     archivesName = 'HideArmor'
 }
 
 tasks.named('jar') {
-    archiveFileName = 'HideArmor-1.0.1-MC-26.3.jar'
+    archiveFileName = 'HideArmor-1.0.3-MC-26.3.jar'
 }
 
 tasks.withType(org.gradle.api.tasks.bundling.AbstractArchiveTask).configureEach {
@@ -45,6 +45,9 @@ def packetEventsCandidates = [
 def localPacketEvents = packetEventsCandidates.find { it.isFile() }
 
 dependencies {
+    compileOnly files('libs/GSit-26.3.jar')
+    compileOnly files('libs/PacketEvents-26.3.jar')
+    testImplementation files('libs/PacketEvents-26.3.jar')
     compileOnly 'fun.bm.lophine:lophine-api:26.3.build.777-alpha'
 
     if (localPacketEvents != null) {

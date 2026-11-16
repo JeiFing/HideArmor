@@ -16,6 +16,11 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSe
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetSlot;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerWindowItems;
 
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPlayerInfoUpdate;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnEntity;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnPlayer;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerDestroyEntities;
+import com.github.retrooper.packetevents.protocol.entity.type.EntityTypes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +42,9 @@ final class ArmorPacketListener extends PacketListenerAbstract {
         WrapperPlayClientCreativeInventoryAction wrapper =
                 new WrapperPlayClientCreativeInventoryAction(event);
         EquipmentMasker.ItemMaskResult result =
-                EquipmentMasker.restoreCreativeItem(wrapper.getItemStack());
+                visibilityManager.isBedrock(event.getUser())
+                        ? BedrockArmorView.restore(wrapper.getItemStack())
+                        : EquipmentMasker.restoreCreativeItem(wrapper.getItemStack());
         if (result.changed()) {
             wrapper.setItemStack(result.item());
             event.markForReEncode(true);
@@ -46,6 +53,23 @@ final class ArmorPacketListener extends PacketListenerAbstract {
 
     @Override
     public void onPacketSend(PacketSendEvent event) {
+        UUID viewer=event.getUser().getUUID();
+        if(viewer!=null){
+            if(event.getPacketType()==PacketType.Play.Server.PLAYER_INFO_UPDATE){
+                var packet=new WrapperPlayServerPlayerInfoUpdate(event);
+                if(packet.getActions().contains(WrapperPlayServerPlayerInfoUpdate.Action.ADD_PLAYER))for(var entry:packet.getEntries()){
+                    var profile=entry.getGameProfile();
+                    if(profile!=null)visibilityManager.poseClones.profile(viewer,entry.getProfileId(),profile.getName());
+                }
+            }else if(event.getPacketType()==PacketType.Play.Server.SPAWN_ENTITY){
+                var packet=new WrapperPlayServerSpawnEntity(event);
+                if(packet.getEntityType()==EntityTypes.PLAYER)packet.getUUID().ifPresent(id->visibilityManager.poseClones.spawn(viewer,packet.getEntityId(),id));
+            }else if(event.getPacketType()==PacketType.Play.Server.SPAWN_PLAYER){
+                var packet=new WrapperPlayServerSpawnPlayer(event);visibilityManager.poseClones.spawn(viewer,packet.getEntityId(),packet.getUUID());
+            }else if(event.getPacketType()==PacketType.Play.Server.DESTROY_ENTITIES){
+                visibilityManager.poseClones.destroy(viewer,new WrapperPlayServerDestroyEntities(event).getEntityIds());
+            }else if(event.getPacketType()==PacketType.Play.Server.RESPAWN){visibilityManager.poseClones.viewerLeft(viewer);}
+        }
         if (event.getPacketType() == PacketType.Play.Server.ENTITY_EQUIPMENT) {
             maskEquipmentPacket(event);
             return;
@@ -60,8 +84,8 @@ final class ArmorPacketListener extends PacketListenerAbstract {
             return;
         }
 
-        if (visibilityManager.shouldUseModelLessView(event.getUser())) {
-            maskSelfInventoryPacket(event, setting);
+        if (visibilityManager.shouldUseModelLessView(event.getUser()) || visibilityManager.isBedrock(event.getUser())) {
+            maskSelfInventoryPacket(event, setting, visibilityManager.isBedrock(event.getUser()));
         } else {
             scheduleSelfInventoryCorrection(event, setting);
         }
@@ -77,6 +101,7 @@ final class ArmorPacketListener extends PacketListenerAbstract {
             targetId = visibilityManager.playerIdForEntity(wrapper.getEntityId());
         }
 
+        if(targetId==null)targetId=visibilityManager.poseClones.owner(viewerId,wrapper.getEntityId());
         if (targetId == null) {
             return;
         }
@@ -85,7 +110,9 @@ final class ArmorPacketListener extends PacketListenerAbstract {
             return;
         }
 
-        EquipmentMasker.MaskMode mode = targetId.equals(viewerId)
+        EquipmentMasker.MaskMode mode = wrapper.getEntityId()==event.getUser().getEntityId() && targetId.equals(viewerId) && visibilityManager.isBedrock(event.getUser())
+                ? EquipmentMasker.MaskMode.BEDROCK_MODEL
+                : wrapper.getEntityId()==event.getUser().getEntityId() && targetId.equals(viewerId)
                 && visibilityManager.shouldUseModelLessView(event.getUser())
                 ? EquipmentMasker.MaskMode.MODEL_LESS
                 : EquipmentMasker.MaskMode.AIR;
@@ -99,14 +126,14 @@ final class ArmorPacketListener extends PacketListenerAbstract {
 
     private static void maskSelfInventoryPacket(
             PacketSendEvent event,
-            ArmorVisibilitySetting setting
+            ArmorVisibilitySetting setting, boolean bedrock
     ) {
         if (event.getPacketType() == PacketType.Play.Server.SET_PLAYER_INVENTORY) {
             WrapperPlayServerSetPlayerInventory wrapper = new WrapperPlayServerSetPlayerInventory(event);
             EquipmentSlot actualSlot = playerInventorySlot(wrapper.getSlot());
             EquipmentMasker.ItemMaskResult result = actualSlot == null
-                    ? EquipmentMasker.maskInventoryItem(wrapper.getStack(), setting)
-                    : EquipmentMasker.maskInventoryItem(wrapper.getStack(), actualSlot, setting);
+                    ? maskInventoryView(bedrock, wrapper.getStack(), setting)
+                    : maskInventoryView(bedrock, wrapper.getStack(), actualSlot, setting);
             if (result.changed()) {
                 wrapper.setStack(result.item());
                 event.markForReEncode(true);
@@ -120,8 +147,8 @@ final class ArmorPacketListener extends PacketListenerAbstract {
                     ? menuArmorSlot(wrapper.getSlot())
                     : null;
             EquipmentMasker.ItemMaskResult result = actualSlot == null
-                    ? EquipmentMasker.maskInventoryItem(wrapper.getItem(), setting)
-                    : EquipmentMasker.maskInventoryItem(wrapper.getItem(), actualSlot, setting);
+                    ? maskInventoryView(bedrock, wrapper.getItem(), setting)
+                    : maskInventoryView(bedrock, wrapper.getItem(), actualSlot, setting);
             if (result.changed()) {
                 wrapper.setItem(result.item());
                 event.markForReEncode(true);
@@ -132,7 +159,7 @@ final class ArmorPacketListener extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.SET_CURSOR_ITEM) {
             WrapperPlayServerSetCursorItem wrapper = new WrapperPlayServerSetCursorItem(event);
             EquipmentMasker.ItemMaskResult result =
-                    EquipmentMasker.maskInventoryItem(wrapper.getStack(), setting);
+                    maskInventoryView(bedrock, wrapper.getStack(), setting);
             if (result.changed()) {
                 wrapper.setStack(result.item());
                 event.markForReEncode(true);
@@ -151,15 +178,15 @@ final class ArmorPacketListener extends PacketListenerAbstract {
                         ? menuArmorSlot(index)
                         : null;
                 EquipmentMasker.ItemMaskResult result = actualSlot == null
-                        ? EquipmentMasker.maskInventoryItem(item, setting)
-                        : EquipmentMasker.maskInventoryItem(item, actualSlot, setting);
+                        ? maskInventoryView(bedrock, item, setting)
+                        : maskInventoryView(bedrock, item, actualSlot, setting);
                 masked.add(result.changed() ? result.item() : item);
                 changed |= result.changed();
             }
 
             ItemStack carried = wrapper.getCarriedItem().orElse(null);
             EquipmentMasker.ItemMaskResult carriedResult =
-                    EquipmentMasker.maskInventoryItem(carried, setting);
+                    maskInventoryView(bedrock, carried, setting);
             if (carriedResult.changed()) {
                 wrapper.setCarriedItem(carriedResult.item());
                 changed = true;
@@ -170,6 +197,13 @@ final class ArmorPacketListener extends PacketListenerAbstract {
                 event.markForReEncode(true);
             }
         }
+    }
+
+    private static EquipmentMasker.ItemMaskResult maskInventoryView(boolean bedrock, ItemStack item, ArmorVisibilitySetting setting) {
+        return bedrock ? BedrockArmorView.mask(item, setting) : EquipmentMasker.maskInventoryItem(item, setting);
+    }
+    private static EquipmentMasker.ItemMaskResult maskInventoryView(boolean bedrock, ItemStack item, EquipmentSlot slot, ArmorVisibilitySetting setting) {
+        return bedrock ? BedrockArmorView.mask(item, slot, setting) : EquipmentMasker.maskInventoryItem(item, slot, setting);
     }
 
     private void scheduleSelfInventoryCorrection(

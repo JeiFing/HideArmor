@@ -1,0 +1,29 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "MeowCraft HideArmor",
+    "description": "Per-player hidden armor appearance",
+    "uuid": "48e13382-b8af-41e2-8b3e-cc1548930325",
+    "version": [
+      1,
+      0,
+      1
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "2ff06c92-e701-406a-bdd9-88cbeb69ae8e",
+      "version": [
+        1,
+        0,
+        1
+      ]
+    }
+  ]
+}

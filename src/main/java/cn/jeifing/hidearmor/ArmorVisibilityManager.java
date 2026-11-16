@@ -21,6 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 final class ArmorVisibilityManager {
+    final PoseCloneRegistry poseClones=new PoseCloneRegistry();
     private final HideArmorPlugin plugin;
     private final HiddenStateStore stateStore;
     private final BedrockPlayerDetector bedrockPlayerDetector;
@@ -59,6 +60,8 @@ final class ArmorVisibilityManager {
                 && stateStore.hasHiddenSlots(playerId)
                 && generation(playerId) == expectedGeneration;
     }
+
+    boolean isBedrock(User user) { return user != null && bedrockPlayerDetector.isBedrock(user.getUUID()); }
 
     boolean shouldUseModelLessView(User user) {
         if (user == null || bedrockPlayerDetector.isBedrock(user.getUUID())) {
@@ -106,6 +109,7 @@ final class ArmorVisibilityManager {
         queuedSelfEquipmentRefreshes.remove(playerId);
         generations.remove(playerId);
         bedrockPlayerDetector.untrack(playerId);
+        poseClones.end(playerId);poseClones.viewerLeft(playerId);
     }
 
     void queueFullRefresh(Player player) {
@@ -156,6 +160,7 @@ final class ArmorVisibilityManager {
         entityIdsByPlayerId.clear();
         generations.clear();
         bedrockPlayerDetector.clear();
+        poseClones.clear();
     }
 
     private void sendFullSnapshot(Player subject, ArmorVisibilitySetting setting) {
@@ -173,7 +178,9 @@ final class ArmorVisibilityManager {
     ) {
         var user = PacketEvents.getAPI().getPlayerManager().getUser(viewer);
         if (user != null) {
-            EquipmentMasker.MaskMode mode = viewer.getUniqueId().equals(subject.getUniqueId())
+            EquipmentMasker.MaskMode mode = viewer.getUniqueId().equals(subject.getUniqueId()) && isBedrock(user)
+                    ? EquipmentMasker.MaskMode.BEDROCK_MODEL
+                    : viewer.getUniqueId().equals(subject.getUniqueId())
                     && shouldUseModelLessView(user)
                     ? EquipmentMasker.MaskMode.MODEL_LESS
                     : EquipmentMasker.MaskMode.AIR;
@@ -181,6 +188,11 @@ final class ArmorVisibilityManager {
             WrapperPlayServerEntityEquipment packet =
                     new WrapperPlayServerEntityEquipment(subject.getEntityId(), equipment);
             user.sendPacket(packet);
+            List<Integer> clones=poseClones.ids(viewer.getUniqueId(),subject.getUniqueId());
+            if(!clones.isEmpty()){
+                List<Equipment> cloneEquipment=buildEquipment(subject,setting,EquipmentMasker.MaskMode.AIR);
+                for(int id:clones)user.sendPacket(new WrapperPlayServerEntityEquipment(id,cloneEquipment));
+            }
         }
     }
 

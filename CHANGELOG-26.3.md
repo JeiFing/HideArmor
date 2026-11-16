@@ -1,7 +1,9 @@
-# HideArmor 1.0.1 / Minecraft 26.3
+# Minecraft 26.3 更新
 
-- Updated Lophine API target to 26.3.
-- Updated plugin api-version to 26.3.
-- Updated protocol tests to 26.3.
-- Removed the PacketEvents 2.13.0 EQUIPPABLE slot-id workaround; 26.3-capable PacketEvents resolves component slot ids correctly.
-- Runtime still requires PacketEvents; until an official 26.3 release is available, the verified test baseline is upstream PR #1582.
+## 1.0.3
+
+- 修复 GSit 部分动作重新显示盔甲的问题。
+- 增加基岩版隐藏外观映射，保留物品栏图标、穿脱与真实护甲效果。
+- 鞘翅和原有隐藏选项保持不变。
+
+已在 Linux Java 客户端及基岩客户端检查六种动作、第三人称和自由视角；不将该结果视为所有系统与插件组合的保证。

@@ -4,7 +4,7 @@
 
 - 以**服务端实际 Minecraft 版本**选择名称匹配的 JAR；文件名中的 `MC-*` 是当时的构建目标，不是所有新旧版本均互通的保证。
 - `v1.0.0` 保存原历史文件夹中所有对应版本的原始 JAR（字节不作修改）。不同文件名即使 SHA-256 相同，也按原文件名提供。
-- `v1.0.1` 是面向 Minecraft / Lophine 26.3 的最新源码版本。原存档 `HideArmor-26.3.jar` 与 `HideArmor-1.0.1-MC-26.3.jar` 的内容哈希相同。
+- `v1.0.3` 是面向 Minecraft / Lophine 26.3 的最新源码版本。原存档 `HideArmor-26.3.jar` 与 `HideArmor-1.0.1-MC-26.3.jar` 的内容哈希相同。
 - PacketEvents 是所有版本的必需前置，需选**与你的服务端版本相匹配**的 PacketEvents。Minecraft 26.3 推荐 PacketEvents 2.14.0 或明确声明支持 26.3 的更高兼容版本。
 - 旧构建只验证了其内置 `plugin.yml` 的元数据和 ZIP 完整性，**未逐一在所有版本执行服务器启动及真人游戏测试**。
 - `folia-supported` 由各 JAR 的 `plugin.yml` 决定，不要把本仓库最新版本的说明直接套用到所有老版本。
@@ -16,7 +16,7 @@
 | 1.20.1–1.20.6 | `v1.0.0` | 元数据声明 `folia-supported: true` |
 | 1.21 / 1.21.1–1.21.11 | `v1.0.0` | 含 `1.21.2-compat` 特别标记构建 |
 | 26.1.2 / 26.2 | `v1.0.0` | 依赖对应 Minecraft 协议能力的 PacketEvents |
-| 26.3 | `v1.0.1` | 当前源码仅适配 26.3、Java 25、PacketEvents 26.3 协议 |
+| 26.3 | `v1.0.3` | 当前源码仅适配 26.3、Java 25、PacketEvents 26.3 协议 |
 
 ## 所有历史 JAR（v1.0.0）
 

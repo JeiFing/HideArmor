@@ -18,7 +18,7 @@ class PluginDescriptorTest {
             assertNotNull(input);
             String descriptor = new String(input.readAllBytes(), StandardCharsets.UTF_8);
             assertTrue(descriptor.contains("name: HideArmor"));
-            assertTrue(descriptor.contains("version: '1.0.1'"));
+            assertTrue(descriptor.contains("version: '1.0.3'"));
             assertTrue(descriptor.contains("main: cn.jeifing.hidearmor.HideArmorPlugin"));
             assertTrue(descriptor.contains("api-version: '26.3'"));
             assertTrue(descriptor.contains("folia-supported: true"));

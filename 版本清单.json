@@ -1,0 +1,26 @@
+{
+  "version": "1.0.3",
+  "tag": "v1.0.3",
+  "sourceRoot": ".",
+  "artifacts": [
+    {
+      "filename": "HideArmor-1.0.3-MC-26.3.jar",
+      "sha256": "dac7f18798ca21dafd4d7ad3360442f7e4c88b6f0ed71edcf9a7a2cfac24c9b9",
+      "bytes": 48014
+    },
+    {
+      "filename": "MeowCraft-HideArmor-Bedrock-1.0.1.mcpack",
+      "sha256": "75d50decb67521d7f89ae3e317746b70be3c1e716c8f0fff48a449df81c5e3de",
+      "bytes": 13879
+    },
+    {
+      "filename": "hidearmor-v2.json",
+      "sha256": "37b28f30b4c23198d4eb14ad70a9d55f222e86bc5d0dd1c2b276609ab79b1a2c",
+      "bytes": 11300
+    }
+  ],
+  "build": "gradle build（Java 25）；依赖安装见 libs/README.md",
+  "status": "DEPLOYED_VERIFIED_SCOPE_RECORDED",
+  "mainMirrorApplied": true,
+  "velocityApplied": true
+}
